@@ -40,7 +40,7 @@ CREATE TABLE PROFESOR (
     email_personal varchar(100) NOT NULL,
     email_institucional varchar(100) NOT NULL,
     contraseña varchar(200) NOT NULL,
-    esta_activo boolean
+    esta_activo boolean,
 ); 
 
 CREATE TABLE MATERIA(
@@ -98,4 +98,49 @@ CREATE TABLE HORARIO_GRUPO (
     CONSTRAINT fk_horario_grupo_id_horario
         FOREIGN KEY (id_horario) 
         REFERENCES HORARIO(id)
+);
+
+CREATE TABLE ALUMNO_AUDITORIA (
+    audit_id integer(6) PRIMARY KEY,
+    expediente integer(6),
+    nombre varchar(254) NOT NULL,
+    apellidos varchar(254) NOT NULL,
+    genero varchar(30) NOT NULL,
+    email_personal varchar(100) NOT NULL,
+    email_institucional varchar(100) NOT NULL,
+    nip varchar(200) NOT NULL,
+    telefono varchar(12) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    domicilio varchar(150),
+    promedio double(4,2),
+    expediente_grupo integer(2),
+    fecha_actualizacion date,
+    modificado_por varchar(128),
+    operacion varchar(1) NOT NULL
+);
+
+CREATE TABLE PROMEDIO_AUDITORIA (
+    audit_id integer(6) PRIMARY KEY,
+    expediente_alumno integer(6) NOT NULL,
+    expediente_materia integer(6) NOT NULL,
+    promedio double(4,2) NOT NULL,
+    fecha_actualizacion date,
+    modificado_por varchar(128),
+    operacion varchar(1) NOT NULL
+);
+
+CREATE TABLE PROFESOR_AUDITORIA (
+    audit_id integer(6) PRIMARY KEY,
+    expediente integer(6),
+    nombre varchar(254) NOT NULL,
+    apellidos varchar(254) NOT NULL,
+    genero varchar(30) NOT NULL,
+    salario double(4,4) NOT NULL,
+    email_personal varchar(100) NOT NULL,
+    email_institucional varchar(100) NOT NULL,
+    contraseña varchar(200) NOT NULL,
+    esta_activo boolean,
+    fecha_actualizacion date,
+    modificado_por varchar(128),
+    operacion varchar(1) NOT NULL
 );
