@@ -1,0 +1,15 @@
+insert into SALON (id, nombre, es_laboratorio) values (1, 'Aula 1', false);
+insert into SALON (id, nombre, es_laboratorio) values (2, 'Aula 2', false);
+insert into SALON (id, nombre, es_laboratorio) values (3, 'Aula 3', false);
+insert into SALON (id, nombre, es_laboratorio) values (4, 'Aula 4', false);
+insert into SALON (id, nombre, es_laboratorio) values (5, 'Aula 5', false);
+insert into SALON (id, nombre, es_laboratorio) values (6, 'Aula 6', false);
+insert into SALON (id, nombre, es_laboratorio) values (7, 'Aula 7', false);
+insert into SALON (id, nombre, es_laboratorio) values (8, 'Aula 8', false);
+insert into SALON (id, nombre, es_laboratorio) values (9, 'Aula 9', false);
+insert into SALON (id, nombre, es_laboratorio) values (10, 'Aula 10', false);
+insert into SALON (id, nombre, es_laboratorio) values (11, 'Lab 1', true);
+insert into SALON (id, nombre, es_laboratorio) values (12, 'Lab 2', true);
+insert into SALON (id, nombre, es_laboratorio) values (13, 'Lab 3', true);
+insert into SALON (id, nombre, es_laboratorio) values (14, 'Lab 4', true);
+insert into SALON (id, nombre, es_laboratorio) values (15, 'Lab 5', true);

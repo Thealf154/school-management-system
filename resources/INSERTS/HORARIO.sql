@@ -1,0 +1,10 @@
+insert into HORARIO (id, hora_entrada, hora_salida) values (1, '07:00', '12:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (2, '07:00', '13:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (3, '07:00', '14:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (4, '08:00', '12:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (5, '08:00', '13:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (6, '08:00', '14:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (7, '09:00', '12:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (8, '09:00', '13:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (9, '09:00', '14:00');
+insert into HORARIO (id, hora_entrada, hora_salida) values (10, '14:00', '21:00');
