@@ -1,0 +1,34 @@
+:root {
+    --white0: white;
+    --bg-light: #f4f5f8;
+    --bg-dark: #363636;
+    --blue0: #00afb9;
+    --blue1: #009eca;
+    --blue2: #3189cd;
+    --purple0: #726ebc;
+    --violet0: #984f97;
+    --violet1: #a63163;
+    --gray0: #f8f8f8;
+    --gray1: #dbe1e8;
+    --gray2: #b2becd;
+    --gray3: #6c7983;
+    --gray4: #454e56;
+    --gray5: #2a2e35;
+    --gray6: #12181b;
+    --nav-width-contracted: 5.5rem;
+    --nav-width-expanded: 13rem;
+    --topbar-width: 4.5rem;
+    --sidebar-transition: width 300ms linear;
+    --item-radius: 30px;
+}
+
+.light-theme {
+    --background: var(--bg-light);
+    --background-item: var(--white0);
+    --primary-color: var(--blue0);
+    --secondary-color: var(--purple0);
+    --inactive: var(--gray3);
+    --inactive-hover: var(--gray2);
+    --primary-text: var(--gray6);
+    --secondary-text: var(--gray3);
+}

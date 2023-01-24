@@ -1,0 +1,16 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  background-color: var(--background);
+  height: 100vh;
+  margin-left: 12vh;
+}
+
+.component {
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem;
+}
