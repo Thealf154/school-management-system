@@ -105,3 +105,17 @@ CREATE PROCEDURE verProfesor
 SELECT expediente, nombre, apellidos, genero, salario, email_personal, email_institucional, contraseñas, esta_activo
 FROM PROFESOR
 WHERE expediente = dato;
+
+#4.- ver las materias y salones que le tocan a un alumno con sus horarios
+
+CREATE PROCEDURE verInfoClaseAlumno 
+(IN dato int(6)) 
+SELECT a.expediente, a.nombre, a.apellidos, g.nombre AS grupo, m.nombre AS materia, p.nombre AS 'Nombre del mastro', p.apellidos AS '', h.hora_entrada AS entrada, h.hora_salida AS salida, s.nombre AS salon
+FROM alumno a
+JOIN grupo g ON g.expediente = a.expediente_grupo 
+JOIN HORARIO_GRUPO hg ON hg.expediente_grupo = g.expediente
+JOIN materia m ON hg.expediente_materia = m.expediente
+JOIN profesor p ON m.expediente_profesor = p.expediente
+JOIN horario h ON hg.id_horario = h.id
+JOIN salon s ON hg.id_salon = s.id
+WHERE a.expediente = dato;
