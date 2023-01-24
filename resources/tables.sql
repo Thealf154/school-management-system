@@ -24,7 +24,7 @@ CREATE TABLE ALUMNO (
     telefono varchar(12) NOT NULL,
     fecha_nacimiento DATE NOT NULL,
     domicilio varchar(150),
-    promedio double(4,2),
+    promedio_general double(4,2),
     expediente_grupo integer(2),
     CONSTRAINT fk_alumno_grupo
         FOREIGN KEY (expediente_grupo) 
@@ -40,7 +40,7 @@ CREATE TABLE PROFESOR (
     email_personal varchar(100) NOT NULL,
     email_institucional varchar(100) NOT NULL,
     contraseña varchar(200) NOT NULL,
-    esta_activo boolean,
+    esta_activo boolean
 ); 
 
 CREATE TABLE MATERIA(
@@ -101,45 +101,55 @@ CREATE TABLE HORARIO_GRUPO (
 );
 
 CREATE TABLE ALUMNO_AUDITORIA (
-    audit_id integer(6) PRIMARY KEY,
+    audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
     expediente integer(6),
-    nombre varchar(254) NOT NULL,
-    apellidos varchar(254) NOT NULL,
-    genero varchar(30) NOT NULL,
-    email_personal varchar(100) NOT NULL,
-    email_institucional varchar(100) NOT NULL,
-    nip varchar(200) NOT NULL,
-    telefono varchar(12) NOT NULL,
-    fecha_nacimiento DATE NOT NULL,
-    domicilio varchar(150),
-    promedio double(4,2),
-    expediente_grupo integer(2),
+
+    old_email_personal varchar(100) NOT NULL,
+    old_email_institucional varchar(100) NOT NULL,
+    old_nip varchar(200) NOT NULL,
+    old_promedio double(4,2),
+
+    new_email_personal varchar(100) NOT NULL,
+    new_email_institucional varchar(100) NOT NULL,
+    new_nip varchar(200) NOT NULL,
+    new_promedio double(4,2),
+
     fecha_actualizacion date,
     modificado_por varchar(128),
     operacion varchar(1) NOT NULL
 );
 
 CREATE TABLE PROMEDIO_AUDITORIA (
-    audit_id integer(6) PRIMARY KEY,
+    audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
     expediente_alumno integer(6) NOT NULL,
-    expediente_materia integer(6) NOT NULL,
-    promedio double(4,2) NOT NULL,
+
+    old_expediente_materia integer(6) NOT NULL,
+    old_promedio double(4,2) NOT NULL,
+
+    new_expediente_materia integer(6) NOT NULL,
+    new_promedio double(4,2) NOT NULL,
+
     fecha_actualizacion date,
     modificado_por varchar(128),
     operacion varchar(1) NOT NULL
 );
 
 CREATE TABLE PROFESOR_AUDITORIA (
-    audit_id integer(6) PRIMARY KEY,
+    audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
     expediente integer(6),
-    nombre varchar(254) NOT NULL,
-    apellidos varchar(254) NOT NULL,
-    genero varchar(30) NOT NULL,
-    salario double(4,4) NOT NULL,
-    email_personal varchar(100) NOT NULL,
-    email_institucional varchar(100) NOT NULL,
-    contraseña varchar(200) NOT NULL,
-    esta_activo boolean,
+
+    old_salario double(4,4) NOT NULL,
+    old_email_personal varchar(100) NOT NULL,
+    old_email_institucional varchar(100) NOT NULL,
+    old_contraseña varchar(200) NOT NULL,
+    old_esta_activo boolean,
+
+    new_salario double(4,4) NOT NULL,
+    new_email_personal varchar(100) NOT NULL,
+    new_email_institucional varchar(100) NOT NULL,
+    new_contraseña varchar(200) NOT NULL,
+    new_esta_activo boolean,
+
     fecha_actualizacion date,
     modificado_por varchar(128),
     operacion varchar(1) NOT NULL
