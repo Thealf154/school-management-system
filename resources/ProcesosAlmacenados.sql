@@ -85,18 +85,10 @@ VALUES
 
 CREATE PROCEDURE verAlumno 
 (IN dato int(6)) 
-SELECT expediente, nombre, apellidos, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio, expediente_grupo AS Grupo 
-FROM alumnos 
+SELECT expediente, nombre, apellidos, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio, expediente_grupo AS Grupo, p.promedio 
+FROM alumnos a
+JOIN promedio p ON a.expediente_alumno = a.expediente
 WHERE expediente = dato;
-
-#2.- Ver promedio de un alumno
-
-CREATE PROCEDURE verPromedioAlumno
-(IN dato int(6))
-SELECT p.expediente_alumno, promedio, a.nombres, a.apellidos
-FROM promedio p
-JOIN alumnos a ON p.expediente_alumno = a.expediente
-WHERE p.expediente_alumno = dato;
 
 #3.- Ver informacion de un profesor.
 
