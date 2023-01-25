@@ -97,7 +97,10 @@ CREATE TABLE HORARIO_GRUPO (
         REFERENCES MATERIA(expediente),
     CONSTRAINT fk_horario_grupo_id_horario
         FOREIGN KEY (id_horario) 
-        REFERENCES HORARIO(id)
+        REFERENCES HORARIO(id),
+    CONSTRAINT fk_id_salones_id_salon
+        FOREING KEY (id_salon)
+        REFERENCES SALON(id)
 );
 
 CREATE TABLE ALUMNO_AUDITORIA (
