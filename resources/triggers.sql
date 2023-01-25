@@ -1,3 +1,4 @@
+-- Se agrega los valores del alumno cada vez que hay un insert
 CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_INSERT
     BEFORE INSERT
 ON ALUMNO
@@ -25,6 +26,7 @@ FOR EACH ROW
         'I'
     );
 
+-- Se agrega los valores del alumno cada vez que hay un update
 CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON ALUMNO
@@ -60,6 +62,7 @@ FOR EACH ROW
         'U'
     );
 
+-- Se agrega los valores del alumno cada vez que hay un delete
 CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_DELETE
     BEFORE DELETE
 ON ALUMNO
@@ -87,7 +90,7 @@ FOR EACH ROW
         'D'
     );
 
-
+-- Se agrega los valores del promedio cada vez que hay un insert
 CREATE OR REPLACE  TRIGGER TR_PROMEDIO_AUDITORIA_INSERT
     BEFORE INSERT
 ON PROMEDIO
@@ -111,6 +114,7 @@ FOR EACH ROW
         'I'
     );
 
+-- Se agrega los valores del promedio cada vez que hay un update
 CREATE OR REPLACE  TRIGGER TR_PROMEDIO_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON PROMEDIO
@@ -139,6 +143,7 @@ FOR EACH ROW
         'U'
     );
 
+-- Se calcula el promedio general del alumno cada vez que hay un insert 
 CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_INSERT
     AFTER INSERT
 ON PROMEDIO
@@ -152,6 +157,7 @@ FOR EACH ROW
     )
     WHERE expediente = NEW.expediente_alumno;
 
+-- Se calcula el promedio general del alumno cada vez que hay un update 
 CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_UPDATE
     AFTER UPDATE
 ON PROMEDIO
@@ -165,6 +171,7 @@ FOR EACH ROW
     )
     WHERE expediente = NEW.expediente_alumno;
 
+-- Se calcula el promedio general del alumno cada vez que hay un delete 
 CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_DELETE
     AFTER DELETE
 ON PROMEDIO
@@ -178,8 +185,7 @@ FOR EACH ROW
     )
     WHERE expediente = OLD.expediente_alumno;
 
-
-
+-- Se agrega los valores del profesor cada vez que hay un insert
 CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_INSERT
     BEFORE INSERT
 ON PROFESOR
@@ -209,6 +215,7 @@ FOR EACH ROW
         'I'
     );
     
+-- Se agrega los valores del profesor cada vez que hay un update
 CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON PROFESOR
@@ -248,6 +255,7 @@ FOR EACH ROW
         'U'
     );
 
+-- Se agrega los valores del profesor cada vez que hay un delete
 CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_DELETE
     BEFORE DELETE
 ON PROFESOR
@@ -277,7 +285,7 @@ FOR EACH ROW
         'D'
     );
 
-
+-- Se agrega un alumno al total de estudiantes por grupo
 CREATE OR REPLACE  TRIGGER TR_TOTAL_SUMAR_ALUMNOS_GRUPO
 BEFORE INSERT
 ON ALUMNO
@@ -286,6 +294,7 @@ FOR EACH ROW
     SET total_estudiantes = total_estudiantes + 1
     WHERE expediente = NEW.expediente_grupo;
 
+-- Se resta un alumno al total de estudiantes por grupo
 CREATE OR REPLACE  TRIGGER TR_TOTAL_RESTAR_ALUMNOS_GRUPO
 BEFORE DELETE
 ON ALUMNO
