@@ -4,9 +4,9 @@ la columna "nombre" y "apellido" de la tabla Alumno
 y la columna "promedio" de la tabla promedio
 */
 CREATE VIEW V_AlumnoReprobados AS
-SELECT CONCAT(alumno.nombre, ' ', alumno.apellido) AS Alumno,promedio.promedio AS Promedio
-FROM alumno
-INNER JOIN promedio
-ON alumno.expediente = promedio.expediente_alumno
-GROUP BY alumno.nombre
-HAVING promedio.promedio < 6;
+SELECT CONCAT(ALUMNO.nombre, ' ', ALUMNO.apellidos) AS Alumno,PROMEDIO.promedio AS Promedio
+FROM ALUMNO
+INNER JOIN PROMEDIO
+ON ALUMNO.expediente = PROMEDIO.expediente_alumno
+GROUP BY ALUMNO.nombre
+HAVING PROMEDIO.promedio < 6;
