@@ -8,7 +8,7 @@ FOR EACH ROW
         new_email_personal,
         new_email_institucional,
         new_nip,
-        new_promedio,
+        new_promedio_general,
         fecha_actualizacion,
         modificado_por,
         operacion
@@ -19,7 +19,7 @@ FOR EACH ROW
         NEW.email_personal,
         NEW.email_institucional,
         NEW.nip,
-        NEW.promedio,
+        NEW.promedio_general,
         SYSDATE,
         (SELECT USER()),
         'I'
@@ -35,11 +35,11 @@ FOR EACH ROW
         old_email_personal,
         old_email_institucional,
         old_nip,
-        old_promedio,
+        old_promedio_general,
         new_email_personal,
         new_email_institucional,
         new_nip,
-        new_promedio,
+        new_promedio_general,
         fecha_actualizacion,
         modificado_por,
         operacion
@@ -50,11 +50,11 @@ FOR EACH ROW
         OLD.email_personal,
         OLD.email_institucional,
         OLD.nip,
-        OLD.promedio,
+        OLD.promedio_general,
         NEW.email_personal,
         NEW.email_institucional,
         NEW.nip,
-        NEW.promedio,
+        NEW.promedio_general,
         SYSDATE,
         (SELECT USER()),
         'U'
@@ -70,7 +70,7 @@ FOR EACH ROW
         old_email_personal,
         old_email_institucional,
         old_nip,
-        old_promedio,
+        old_promedio_general
     ) 
     VALUES
     (
@@ -78,7 +78,7 @@ FOR EACH ROW
         OLD.email_personal,
         OLD.email_institucional,
         OLD.nip,
-        OLD.promedio,
+        OLD.promedio_general,
         SYSDATE,
         (SELECT USER()),
         'D'
