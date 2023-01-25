@@ -53,7 +53,7 @@ insert into CURSO (expediente, nombre) values (52, 'QMA13');
 insert into CURSO (expediente, nombre) values (53, 'QMA18');
 insert into CURSO (expediente, nombre) values (54, 'QMA23');
 insert into CURSO (expediente, nombre) values (55, 'QAL13');
-insert into CURSO (expediente, nombre) values (56, 'QAL18 ');
+insert into CURSO (expediente, nombre) values (56, 'QAL18');
 insert into CURSO (expediente, nombre) values (57, 'QAL23');
 insert into CURSO (expediente, nombre) values (58, 'AGQ13');
 insert into CURSO (expediente, nombre) values (59, 'AGQ18');
