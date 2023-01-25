@@ -1,4 +1,4 @@
-CREATE TRIGGER TR_ALUMNO_AUDITORIA_INSERT
+CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_INSERT
     BEFORE INSERT
 ON ALUMNO
 FOR EACH ROW
@@ -20,12 +20,12 @@ FOR EACH ROW
         NEW.email_institucional,
         NEW.nip,
         NEW.promedio_general,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'I'
     );
 
-CREATE TRIGGER TR_ALUMNO_AUDITORIA_UPDATE
+CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON ALUMNO
 FOR EACH ROW
@@ -55,12 +55,12 @@ FOR EACH ROW
         NEW.email_institucional,
         NEW.nip,
         NEW.promedio_general,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'U'
     );
 
-CREATE TRIGGER TR_ALUMNO_AUDITORIA_DELETE
+CREATE OR REPLACE  TRIGGER TR_ALUMNO_AUDITORIA_DELETE
     BEFORE DELETE
 ON ALUMNO
 FOR EACH ROW
@@ -70,7 +70,10 @@ FOR EACH ROW
         old_email_personal,
         old_email_institucional,
         old_nip,
-        old_promedio_general
+        old_promedio_general,
+        fecha_actualizacion,
+        modificado_por,
+        operacion
     ) 
     VALUES
     (
@@ -79,13 +82,13 @@ FOR EACH ROW
         OLD.email_institucional,
         OLD.nip,
         OLD.promedio_general,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'D'
     );
 
 
-CREATE TRIGGER TR_PROMEDIO_AUDITORIA_INSERT
+CREATE OR REPLACE  TRIGGER TR_PROMEDIO_AUDITORIA_INSERT
     BEFORE INSERT
 ON PROMEDIO
 FOR EACH ROW
@@ -103,12 +106,12 @@ FOR EACH ROW
         NEW.expediente_alumno,
         NEW.expediente_materia,
         NEW.promedio,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'I'
     );
 
-CREATE TRIGGER TR_PROMEDIO_AUDITORIA_UPDATE
+CREATE OR REPLACE  TRIGGER TR_PROMEDIO_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON PROMEDIO
 FOR EACH ROW
@@ -131,35 +134,53 @@ FOR EACH ROW
         OLD.promedio,
         NEW.expediente_materia,
         NEW.promedio,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'U'
     );
 
-CREATE TRIGGER TR_PROMEDIO_AUDITORIA_DELETE
-    BEFORE DELETE
+CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_INSERT
+    AFTER INSERT
 ON PROMEDIO
 FOR EACH ROW
-    INSERT INTO PROMEDIO_AUDITORIA
+    UPDATE ALUMNO 
+    SET promedio_general = 
     (
-        expediente_alumno,
-        old_expediente_materia,
-        old_promedio,
-        fecha_actualizacion,
-        modificado_por,
-        operacion
+        SELECT AVG(promedio)
+        FROM PROMEDIO
+        WHERE expediente_alumno = NEW.expediente_alumno
     )
-    VALUES
-    (
-        OLD.expediente_alumno,
-        OLD.expediente_materia,
-        OLD.promedio,
-        SYSDATE,
-        (SELECT USER()),
-        'D'
-    );
+    WHERE expediente = NEW.expediente_alumno;
 
-CREATE TRIGGER TR_PROFESOR_AUDITORIA_INSERT
+CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_UPDATE
+    AFTER UPDATE
+ON PROMEDIO
+FOR EACH ROW
+    UPDATE ALUMNO 
+    SET promedio_general = 
+    (
+        SELECT AVG(promedio)
+        FROM PROMEDIO
+        WHERE expediente_alumno = NEW.expediente_alumno
+    )
+    WHERE expediente = NEW.expediente_alumno;
+
+CREATE OR REPLACE  TRIGGER CALCULAR_PROMEDIO_DELETE
+    AFTER DELETE
+ON PROMEDIO
+FOR EACH ROW
+    UPDATE ALUMNO 
+    SET promedio_general = 
+    (
+        SELECT AVG(promedio)
+        FROM PROMEDIO
+        WHERE expediente_alumno = OLD.expediente_alumno
+    )
+    WHERE expediente = OLD.expediente_alumno;
+
+
+
+CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_INSERT
     BEFORE INSERT
 ON PROFESOR
 FOR EACH ROW
@@ -183,12 +204,12 @@ FOR EACH ROW
         NEW.email_institucional,
         NEW.contraseña,
         NEW.esta_activo,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'I'
     );
     
-CREATE TRIGGER TR_PROFESOR_AUDITORIA_UPDATE
+CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_UPDATE
     BEFORE UPDATE
 ON PROFESOR
 FOR EACH ROW
@@ -222,12 +243,12 @@ FOR EACH ROW
         OLD.email_institucional,
         OLD.contraseña,
         OLD.esta_activo,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'U'
     );
 
-CREATE TRIGGER TR_PROFESOR_AUDITORIA_DELETE
+CREATE OR REPLACE  TRIGGER TR_PROFESOR_AUDITORIA_DELETE
     BEFORE DELETE
 ON PROFESOR
 FOR EACH ROW
@@ -251,13 +272,13 @@ FOR EACH ROW
         OLD.email_institucional,
         OLD.contraseña,
         OLD.esta_activo,
-        SYSDATE,
+        SYSDATE(),
         (SELECT USER()),
         'D'
     );
 
 
-CREATE TRIGGER TR_TOTAL_SUMAR_ALUMNOS_GRUPO
+CREATE OR REPLACE  TRIGGER TR_TOTAL_SUMAR_ALUMNOS_GRUPO
 BEFORE INSERT
 ON ALUMNO
 FOR EACH ROW
@@ -265,7 +286,7 @@ FOR EACH ROW
     SET total_estudiantes = total_estudiantes + 1
     WHERE expediente = NEW.expediente_grupo;
 
-CREATE TRIGGER TR_TOTAL_RESTAR_ALUMNOS_GRUPO
+CREATE OR REPLACE  TRIGGER TR_TOTAL_RESTAR_ALUMNOS_GRUPO
 BEFORE DELETE
 ON ALUMNO
 FOR EACH ROW

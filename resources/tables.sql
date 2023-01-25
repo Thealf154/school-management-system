@@ -110,12 +110,12 @@ CREATE TABLE ALUMNO_AUDITORIA (
     old_email_personal varchar(100),
     old_email_institucional varchar(100) ,
     old_nip varchar(200),
-    old_promedio double(4,2),
+    old_promedio_general double(4,2),
 
     new_email_personal varchar(100),
     new_email_institucional varchar(100) ,
     new_nip varchar(200),
-    new_promedio double(4,2),
+    new_promedio_general double(4,2),
 
     fecha_actualizacion date NOT NULL,
     modificado_por varchar(128) NOT NULL,
