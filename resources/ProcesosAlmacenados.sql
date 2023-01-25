@@ -17,7 +17,7 @@ CREATE PROCEDURE crearAlumno
  IN expediente_grupo int(2)
  )
  INSERT INTO ALUMNO
- (expediente, nombre, apellido, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio, expediente_grupo)
+ (expediente, nombre, apellido, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio_general, expediente_grupo)
 VALUES
 (expediente, nombre, apellido, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio, expediente_grupo);
 
@@ -30,7 +30,7 @@ CREATE PROCEDURE crearProfesor
  IN apellidos varchar(254),
  IN genero varchar(30),
  IN salario double,
- IN email_personale varchar(100),
+ IN email_personal varchar(100),
  IN email_institucional varchar(100),
  IN contra varchar(200),
  IN esta_activo boolean
@@ -86,15 +86,15 @@ VALUES
 CREATE PROCEDURE verAlumno 
 (IN dato int(6)) 
 SELECT expediente, nombre, apellidos, genero, email_personal, email_institucional, nip, telefono, fecha_nacimiento, domicilio, promedio, expediente_grupo AS Grupo, p.promedio 
-FROM alumnos a
-JOIN promedio p ON a.expediente_alumno = a.expediente
+FROM alumno a
+JOIN promedio p ON p.expediente_alumno = a.expediente
 WHERE expediente = dato;
 
 #3.- Ver informacion de un profesor.
 
 CREATE PROCEDURE verProfesor 
 (IN dato int(6))
-SELECT expediente, nombre, apellidos, genero, salario, email_personal, email_institucional, contraseñas, esta_activo
+SELECT expediente, nombre, apellidos, genero, salario, email_personal, email_institucional, contraseña, esta_activo
 FROM PROFESOR
 WHERE expediente = dato;
 
