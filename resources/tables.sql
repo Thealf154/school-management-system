@@ -73,8 +73,8 @@ CREATE TABLE PROMEDIO (
 
 CREATE TABLE HORARIO (
     id integer(6) PRIMARY KEY,
-    hora_entrada TIMESTAMP,
-    hora_salida TIMESTAMP
+    hora_entrada TIME,
+    hora_salida TIME
 );
 
 CREATE TABLE SALON(
@@ -99,7 +99,7 @@ CREATE TABLE HORARIO_GRUPO (
         FOREIGN KEY (id_horario) 
         REFERENCES HORARIO(id),
     CONSTRAINT fk_id_salones_id_salon
-        FOREING KEY (id_salon)
+        FOREIGN KEY (id_salon)
         REFERENCES SALON(id)
 );
 
