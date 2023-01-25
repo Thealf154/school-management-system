@@ -105,20 +105,20 @@ CREATE TABLE HORARIO_GRUPO (
 
 CREATE TABLE ALUMNO_AUDITORIA (
     audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
-    expediente integer(6),
+    expediente integer(6) NOT NULL,
 
-    old_email_personal varchar(100) NOT NULL,
-    old_email_institucional varchar(100) NOT NULL,
-    old_nip varchar(200) NOT NULL,
+    old_email_personal varchar(100),
+    old_email_institucional varchar(100) ,
+    old_nip varchar(200),
     old_promedio double(4,2),
 
-    new_email_personal varchar(100) NOT NULL,
-    new_email_institucional varchar(100) NOT NULL,
-    new_nip varchar(200) NOT NULL,
+    new_email_personal varchar(100),
+    new_email_institucional varchar(100) ,
+    new_nip varchar(200),
     new_promedio double(4,2),
 
-    fecha_actualizacion date,
-    modificado_por varchar(128),
+    fecha_actualizacion date NOT NULL,
+    modificado_por varchar(128) NOT NULL,
     operacion varchar(1) NOT NULL
 );
 
@@ -126,14 +126,14 @@ CREATE TABLE PROMEDIO_AUDITORIA (
     audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
     expediente_alumno integer(6) NOT NULL,
 
-    old_expediente_materia integer(6) NOT NULL,
-    old_promedio double(4,2) NOT NULL,
+    old_expediente_materia integer(6) ,
+    old_promedio double(4,2),
 
-    new_expediente_materia integer(6) NOT NULL,
-    new_promedio double(4,2) NOT NULL,
+    new_expediente_materia integer(6),
+    new_promedio double(4,2),
 
-    fecha_actualizacion date,
-    modificado_por varchar(128),
+    fecha_actualizacion date NOT NULL,
+    modificado_por varchar(128) NOT NULL,
     operacion varchar(1) NOT NULL
 );
 
@@ -141,19 +141,19 @@ CREATE TABLE PROFESOR_AUDITORIA (
     audit_id integer(6) PRIMARY KEY AUTO_INCREMENT,
     expediente integer(6),
 
-    old_salario double(4,4) NOT NULL,
-    old_email_personal varchar(100) NOT NULL,
-    old_email_institucional varchar(100) NOT NULL,
-    old_contraseña varchar(200) NOT NULL,
+    old_salario double(4,4),
+    old_email_personal varchar(100),
+    old_email_institucional varchar(100),
+    old_contraseña varchar(200),
     old_esta_activo boolean,
 
-    new_salario double(4,4) NOT NULL,
-    new_email_personal varchar(100) NOT NULL,
-    new_email_institucional varchar(100) NOT NULL,
-    new_contraseña varchar(200) NOT NULL,
+    new_salario double(4,4),
+    new_email_personal varchar(100),
+    new_email_institucional varchar(100),
+    new_contraseña varchar(200),
     new_esta_activo boolean,
 
-    fecha_actualizacion date,
-    modificado_por varchar(128),
+    fecha_actualizacion date NOT NULL,
+    modificado_por varchar(128) NOT NULL,
     operacion varchar(1) NOT NULL
 );
