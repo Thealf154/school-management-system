@@ -12,7 +12,7 @@ CREATE PROCEDURE crearAlumno
  IN nip varchar(200),
  IN telefono varchar(12),
  IN fecha_nacimiento date,
- IN domicilio varchar(150)
+ IN domicilio varchar(150),
  IN promedio double,
  IN expediente_grupo int(2)
  )
@@ -31,7 +31,7 @@ CREATE PROCEDURE crearProfesor
  IN genero varchar(30),
  IN salario double,
  IN email_personale varchar(100),
- IN email_institucional varchar(100).
+ IN email_institucional varchar(100),
  IN contra varchar(200),
  IN esta_activo boolean
 )
@@ -62,7 +62,7 @@ CREATE PROCEDURE crearHorario
  IN hora_entrada time,
  IN hora_salida time
 ) 
-INSTERT INTO HORARIO 
+INSERT INTO HORARIO 
 (id, hora_entrada, hora_salida) 
 VALUES 
 (id, hora_entrada, hora_salida);
